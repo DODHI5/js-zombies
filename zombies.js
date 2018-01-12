@@ -7,6 +7,12 @@
  * @param {string} name     The item's name.
  * @property {string} name
  */
+class Item {
+  constructor(name) {
+    this.name = name;
+  }
+
+};
 
 
 /**
@@ -24,7 +30,12 @@
  * @param {number} damage   The weapon's damage.
  * @property {number} damage
  */
-
+class Weapon extends Item {
+  constructor(name, damage) {
+    super(name);
+    this.damage = damage;
+  }
+};
 
 /**
  * Weapon Extends Item Class
@@ -48,7 +59,12 @@
  * @param {number} energy     The energy the food provides.
  * @property {number} energy
  */
-
+class Food extends Item {
+  constructor(name, energy) {
+    super(name);
+    this.energy = energy;
+  }
+};
 
 /**
  * Food Extends Item Class
@@ -78,6 +94,23 @@
  * @property {method} getPack              Returns private variable `pack`.
  * @property {method} getMaxHealth         Returns private variable `maxHealth`.
  */
+class Player {
+  constructor(name, health, strength, speed){
+    this.name = name;
+    this.health = health;
+    this.strength = strength;
+    this.speed = speed;
+    this.isAlive = true;
+    this.equipped = false;
+    this.maxHealth = this.maxHealth;
+    this._pack = [];
+  }
+  getPack(pack){
+    return this._pack; 
+  }
+  getMaxHealth(maxHealth){
+    return this.health; 
+  }
 
 
 /**
@@ -91,6 +124,10 @@
  *
  * @name checkPack
  */
+
+checkPack(){
+  return console.log(this.getPack());
+}
 
 
 /**
@@ -110,8 +147,14 @@
  * @param {Item/Weapon/Food} item   The item to take.
  * @return {boolean} true/false     Whether player was able to store item in pack.
  */
-
-
+  takeItem(item){
+   if (this.getPack().length < 3 ){
+     this._pack.push(item);
+     console.log(this.item)
+   }else{
+     return console.log(false);
+ }
+ }
 /**
  * Player Class Method => discardItem(item)
  * -----------------------------
@@ -137,6 +180,17 @@
  * @param {Item/Weapon/Food} item   The item to discard.
  * @return {boolean} true/false     Whether player was able to remove item from pack.
  */
+discardItem(item){
+  let dropItem = this.getPack().indexOf(item)
+if(dropItem === -1){
+  console.log("item not found")
+}else{
+  this.getPack().splice(dropItem,1)
+  console.log(dropItem + "-item")
+  return true;
+}
+
+}
 
 
 /**
@@ -158,7 +212,10 @@
  * @name equip
  * @param {Weapon} itemToEquip  The weapon item to equip.
  */
-
+equip(itemToEquip){
+  
+}
+};
 
 /**
  * Player Class Method => eat(itemToEat)
