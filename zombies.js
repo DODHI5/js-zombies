@@ -36,9 +36,9 @@ function Weapon(name, damage) {
  * -----------------------------
  */
 Weapon.prototype = Object.create(Item.prototype, {
-  constructor: {
-    value: Item
-  }
+
+  value: Item
+
 });
 
 
@@ -68,9 +68,9 @@ function Food(name, energy) {
  */
 
 Food.prototype = Object.create(Item.prototype, {
-  constructor: {
-    value: Item
-  }
+
+  value: Item
+
 });
 
 /**
@@ -101,16 +101,16 @@ function Player(name, health, strength, speed) {
   this.speed = speed;
   this.isAlive = true;
   this.equipped = false;
-  this._maxHealth = health;
-  this._pack = [];
-};
-Player.prototype.getPack = function () {
-  return this._pack;
-};
-Player.prototype.getMaxHealth = function () {
-  return this._maxHealth;
-};
+  _maxHealth = health;
+  _pack = [];
 
+  Player.prototype.getPack = function () {
+    return _pack;
+  };
+  Player.prototype.getMaxHealth = function () {
+    return _maxHealth;
+  };
+};
 /**
  * Player Class Method => checkPack()
  * -----------------------------
@@ -145,7 +145,7 @@ Player.prototype.checkPack = function () {
  */
 Player.prototype.takeItem = function (item) {
   if (this.getPack().length < 3) {
-    this._pack.push(item);
+    this.getPack().push(item);
     console.log(this.item)
   } else {
     return console.log(false);
@@ -339,9 +339,9 @@ function Zombie(health, strength, speed) {
  * @param {number} strength         The zombie's strength.
  * @param {number} speed            The zombie's speed.
  */
-function FastZombie(health,strength,speed){
-    Zombie.call(this,health,strength,speed);
-  };
+function FastZombie(health, strength, speed) {
+  Zombie.call(this, health, strength, speed);
+};
 
 
 
@@ -366,8 +366,8 @@ FastZombie.prototype = Object.create(Zombie.prototype);
  * @param {number} strength         The zombie's strength.
  * @param {number} speed            The zombie's speed.
  */
-function StrongZombie(health,strength,speed){
-  Zombie.call(this,health,strength,speed);
+function StrongZombie(health, strength, speed) {
+  Zombie.call(this, health, strength, speed);
 };
 
 /**
@@ -391,8 +391,8 @@ StrongZombie.prototype = Object.create(Zombie.prototype);
  * @param {number} strength         The zombie's strength.
  * @param {number} speed            The zombie's speed.
  */
-function RangedZombie(health,strength,speed){
-  Zombie.call(this,health,strength,speed);
+function RangedZombie(health, strength, speed) {
+  Zombie.call(this, health, strength, speed);
 };
 
 /**
@@ -416,8 +416,8 @@ RangedZombie.prototype = Object.create(Zombie.prototype);
  * @param {number} strength         The zombie's strength.
  * @param {number} speed            The zombie's speed.
  */
-function ExplodingZombie(health,strength,speed){
-  Zombie.call(this,health,strength,speed);
+function ExplodingZombie(health, strength, speed) {
+  Zombie.call(this, health, strength, speed);
 };
 
 /**
